@@ -17,13 +17,13 @@ public class IntegrationLog {
     private Long id;
 
 
-/*    private Process process = Process.valueOf("LOGIN");
+/*    private Process process;
 
 
-    private Service service = Service.valueOf("SARDIS");
+    private Service service;
 
 
-    private Status status = Status.valueOf("ERROR");*/
+    private Status status ;*/
 
     private String request;
 
