@@ -5,9 +5,11 @@ import com.mgmetehan.postgresqlspring.exception.NotFoundException;
 import com.mgmetehan.postgresqlspring.model.SystemParameters;
 import com.mgmetehan.postgresqlspring.repository.SystemParametersRepository;
 import com.mgmetehan.postgresqlspring.service.SystemParametersService;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class SystemParametersServiceImpl implements SystemParametersService {
 
     private final SystemParametersRepository systemParametersRepository;
