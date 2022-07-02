@@ -1,6 +1,5 @@
 package com.mgmetehan.postgresqlspring.dto.dtoBaseEntity;
 
-
 import lombok.Data;
 
 @Data
