@@ -14,11 +14,14 @@ import java.util.List;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @OneToMany
     private Long id;
 
     @JoinColumn(name = "dss_crm_id")
     private Long dssCrmId;
 
+    //Bir hesabından birden fazla channeli vardır
+    //Bir channelın birden fazla kullanıcısı vardır
     @ManyToMany()
     @JoinColumn(name = "channel_id")
     private List<Channel> channel;
