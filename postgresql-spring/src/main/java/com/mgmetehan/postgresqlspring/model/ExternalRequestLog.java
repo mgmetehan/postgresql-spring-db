@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "external_request_log")
@@ -34,7 +33,7 @@ public class ExternalRequestLog {
     private String httpMethod;
 
     //bir kullanicin cok logu olur
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "application_user_id")
     private ApplicationUser applicationUser;
 

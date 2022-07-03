@@ -1,10 +1,9 @@
 package com.mgmetehan.postgresqlspring.service;
 
-import com.mgmetehan.postgresqlspring.dto.dtoIntegrationLog.IntegrationLogCreateDto;
-import com.mgmetehan.postgresqlspring.dto.dtoIntegrationLog.IntegrationLogViewDto;
+import com.mgmetehan.postgresqlspring.model.IntegrationLog;
 
 public interface IntegrationLogService {
-    IntegrationLogViewDto getIntegrationLogById(Long id);
+    IntegrationLog getIntegrationLogById(Long id);
 
-    IntegrationLogViewDto createIntegrationLog(IntegrationLogCreateDto newIntegrationLog);
+    IntegrationLog createIntegrationLog(IntegrationLog newIntegrationLog);
 }

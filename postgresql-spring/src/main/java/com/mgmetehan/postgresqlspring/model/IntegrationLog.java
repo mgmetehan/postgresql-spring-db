@@ -16,14 +16,14 @@ public class IntegrationLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated
+    private Process process;
 
-/*    private Process process;
-
-
+    @Enumerated
     private Service service;
 
-
-    private Status status ;*/
+    @Enumerated
+    private Status status;
 
     private String request;
 
@@ -35,8 +35,7 @@ public class IntegrationLog {
 
     private String url;
 
-
-/*    enum Process {
+    enum Process {
         LOGIN, ACCOUNT_CREATE
     }
 
@@ -46,6 +45,6 @@ public class IntegrationLog {
 
     enum Status {
         SUCCESS, ERROR, MOCK
-    }*/
+    }
 
 }

@@ -1,7 +1,6 @@
 package com.mgmetehan.postgresqlspring.controller;
 
-import com.mgmetehan.postgresqlspring.dto.dtoIntegrationLog.IntegrationLogCreateDto;
-import com.mgmetehan.postgresqlspring.dto.dtoIntegrationLog.IntegrationLogViewDto;
+import com.mgmetehan.postgresqlspring.model.IntegrationLog;
 import com.mgmetehan.postgresqlspring.service.IntegrationLogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +18,13 @@ public class IntegrationLogController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<IntegrationLogViewDto> getIntegrationLogById(@PathVariable("id") Long id) {
-        IntegrationLogViewDto integrationLogViewDto = integrationLogService.getIntegrationLogById(id);
-        return ResponseEntity.ok(integrationLogViewDto);
+    public ResponseEntity<IntegrationLog> getIntegrationLogById(@PathVariable("id") Long id) {
+        IntegrationLog integrationLog = integrationLogService.getIntegrationLogById(id);
+        return ResponseEntity.ok(integrationLog);
     }
 
     @PostMapping
-    public ResponseEntity<?> createIntegrationLog(@Valid @RequestBody IntegrationLogCreateDto newIntegrationLog){
+    public ResponseEntity<?> createIntegrationLog(@Valid @RequestBody IntegrationLog newIntegrationLog){
         return new ResponseEntity<>(integrationLogService.createIntegrationLog(newIntegrationLog), HttpStatus.CREATED);
     }
 
