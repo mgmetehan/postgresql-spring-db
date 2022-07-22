@@ -19,17 +19,13 @@ public class Channel {
     @Enumerated
     private Name name;
 
-    @ManyToMany(mappedBy = "channels",fetch =FetchType.LAZY)
+    @ManyToMany(mappedBy = "channels", fetch = FetchType.LAZY)
     private List<Account> accounts;
 
-    @ManyToMany(mappedBy = "users",fetch =FetchType.LAZY)
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
     private List<User> users;
 
     enum Name {
-        DBS,
-        YAANI,
-        BIP_MEET,
-        LIFE_BOX,
-        SUIT,
+        DBS, YAANI, BIP_MEET, LIFE_BOX, SUIT,
     }
 }

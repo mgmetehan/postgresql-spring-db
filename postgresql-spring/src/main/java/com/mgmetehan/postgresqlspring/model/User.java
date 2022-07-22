@@ -38,8 +38,14 @@ public class User {
     @Column(name = "room_name")
     private String roomName;
 
-    @ManyToOne(fetch =FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserDomain userDomain;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PortalRequestLog> portalRequestLogs = new ArrayList<>();
 
 }

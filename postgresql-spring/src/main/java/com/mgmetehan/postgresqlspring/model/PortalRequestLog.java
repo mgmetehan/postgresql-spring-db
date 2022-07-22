@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "external_request_log")
+@Table(name = "portal_request_log")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExternalRequestLog {
+public class PortalRequestLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +23,17 @@ public class ExternalRequestLog {
 
     private String duration;
 
-    @Column(name = "result_code")
-    private String resultCode;
-
     private String path;
 
     @Column(name = "http_method")
     private String httpMethod;
 
-    //bir kullanicin cok logu olur
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "application_user_id")
-    private ApplicationUser applicationUser;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Column(name = "result_code")
+    private String resultCode;
 
     @Column(name = "transaction_id")
     private Long transactionId;

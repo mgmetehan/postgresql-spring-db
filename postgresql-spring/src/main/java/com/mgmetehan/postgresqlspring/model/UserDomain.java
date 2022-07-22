@@ -8,17 +8,17 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "account_domain")
+@Table(name = "user_domain")
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountDomain {
+public class UserDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id")
-    private Account account;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private String domain;
 
