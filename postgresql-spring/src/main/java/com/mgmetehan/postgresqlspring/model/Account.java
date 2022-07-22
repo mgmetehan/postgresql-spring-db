@@ -48,6 +48,10 @@ public class Account {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "account_privilegeGroup", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "privilege_group_id"))
+    private List<PrivilegeGroup> privilegeGroups;
+
     enum IdType {
         TCKN, VKN
     }

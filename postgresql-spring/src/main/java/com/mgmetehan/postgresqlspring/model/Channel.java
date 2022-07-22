@@ -25,6 +25,9 @@ public class Channel {
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
     private List<User> users;
 
+    @ManyToMany(mappedBy = "privileges", fetch = FetchType.LAZY)
+    private List<Privilege> privileges;
+
     enum Name {
         DBS, YAANI, BIP_MEET, LIFE_BOX, SUIT;
     }
