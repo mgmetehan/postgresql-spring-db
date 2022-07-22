@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,6 +18,9 @@ public class Channel {
 
     @Enumerated
     private Name name;
+
+    @ManyToMany(mappedBy = "channels",fetch =FetchType.LAZY)
+    private List<Account> accounts;
 
     enum Name {
         DBS,

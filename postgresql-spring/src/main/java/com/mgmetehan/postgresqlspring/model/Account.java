@@ -19,9 +19,9 @@ public class Account {
     @JoinColumn(name = "dss_crm_id")
     private Long dssCrmId;
 
-    @ManyToMany()
-    @JoinColumn(name = "channel_id")
-    private List<Channel> channel;
+    @ManyToMany(fetch =FetchType.LAZY)
+    @JoinTable(name = "account_channel",joinColumns =@JoinColumn(name = "account_id"),inverseJoinColumns =@JoinColumn(name = "channel_id"))
+    private List<Channel> channels;
 
     @Enumerated
     private Type type;
@@ -34,7 +34,9 @@ public class Account {
     private IdType idType;
 
     @JoinColumn(name = "id_value")
-    private Long idValue;
+    private int idValue;
+
+    private String ncst;
 
     enum IdType {
         TCKN,

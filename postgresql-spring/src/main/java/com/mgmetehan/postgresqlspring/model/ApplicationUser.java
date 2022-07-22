@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "application_user")
@@ -21,5 +23,8 @@ public class ApplicationUser {
 
     @Column(name = "client_key")
     private String clientKey;
+
+    @OneToMany(mappedBy = "applicationUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ExternalRequestLog> log = new ArrayList<>();
 
 }

@@ -33,7 +33,7 @@ public class ExternalRequestLog {
     private String httpMethod;
 
     //bir kullanicin cok logu olur
-    @ManyToOne()
+    @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "application_user_id")
     private ApplicationUser applicationUser;
 
