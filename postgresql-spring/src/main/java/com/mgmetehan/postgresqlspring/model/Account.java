@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,8 +20,8 @@ public class Account {
     @JoinColumn(name = "dss_crm_id")
     private Long dssCrmId;
 
-    @ManyToMany(fetch =FetchType.LAZY)
-    @JoinTable(name = "account_channel",joinColumns =@JoinColumn(name = "account_id"),inverseJoinColumns =@JoinColumn(name = "channel_id"))
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "account_channel", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "channel_id"))
     private List<Channel> channels;
 
     @Enumerated
@@ -37,6 +38,12 @@ public class Account {
     private int idValue;
 
     private String ncst;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private AccountDomain accountDomain;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<AuthenticationMethod> authenticationMethods = new ArrayList<>();
 
     enum IdType {
         TCKN,
