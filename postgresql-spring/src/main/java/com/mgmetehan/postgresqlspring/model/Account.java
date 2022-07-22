@@ -39,7 +39,7 @@ public class Account {
 
     private String ncst;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
     private AccountDomain accountDomain;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

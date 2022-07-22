@@ -5,21 +5,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
-@Table(name = "account_domain")
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountDomain {
+public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne()
-    @JoinColumn(name = "account_id")
-    private Account account;
+    @Enumerated
+    private Name name;
 
-    private String domain;
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<User> users = new ArrayList<>();
 
+    enum Name {
+        USER, ADMIN, BUSINESS;
+    }
 }
