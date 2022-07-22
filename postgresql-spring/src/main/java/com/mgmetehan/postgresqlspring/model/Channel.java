@@ -13,7 +13,6 @@ import javax.persistence.*;
 public class Channel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ManyToOne
     private Long id;
 
     @Enumerated
