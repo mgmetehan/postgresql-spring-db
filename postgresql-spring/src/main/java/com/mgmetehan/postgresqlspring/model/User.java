@@ -19,10 +19,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-/*    //Bir userın birden fazla hesabı vardır many to one
-    @ManyToOne
-    @JoinColumn(name = "account_id")
-    private Account account;*/
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Account> accounts = new ArrayList<>();
 
     @Column(name = "is_tenant_manager")
     private String isTenantManager;
@@ -32,10 +30,10 @@ public class User {
     private String email;
     private String msisdn;
 
-/*    //bir userın birden fazla channeli var bir channelın birden fazla userı
-    @ManyToMany
-    @JoinColumn(name = "channel_id")
-    private List<Channel> channel;*/
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_channel", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "channel_id"))
+    private List<User> users;
+
 
     @Column(name = "room_name")
     private String roomName;

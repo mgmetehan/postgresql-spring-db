@@ -45,6 +45,9 @@ public class Account {
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<AuthenticationMethod> authenticationMethods = new ArrayList<>();
 
+    @ManyToOne(fetch =FetchType.LAZY)
+    private User user;
+
     enum IdType {
         TCKN,
         VKN

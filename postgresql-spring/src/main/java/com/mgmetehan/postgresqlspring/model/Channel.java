@@ -22,6 +22,9 @@ public class Channel {
     @ManyToMany(mappedBy = "channels",fetch =FetchType.LAZY)
     private List<Account> accounts;
 
+    @ManyToMany(mappedBy = "users",fetch =FetchType.LAZY)
+    private List<User> users;
+
     enum Name {
         DBS,
         YAANI,
