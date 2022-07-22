@@ -26,8 +26,11 @@ public class User {
     private String isTenantManager;
 
     private String name;
+
     private String surname;
+
     private String email;
+
     private String msisdn;
 
     @ManyToMany(fetch = FetchType.LAZY)

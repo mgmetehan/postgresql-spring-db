@@ -9,9 +9,10 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "subscription_status")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Channel {
+public class SubscriptionStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,13 +20,7 @@ public class Channel {
     @Enumerated
     private Name name;
 
-    @ManyToMany(mappedBy = "channels", fetch = FetchType.LAZY)
-    private List<Account> accounts;
-
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
-    private List<User> users;
-
     enum Name {
-        DBS, YAANI, BIP_MEET, LIFE_BOX, SUIT;
+        ACTIVE,DEACTIVE,GRACE_PERIOD,SUSPEND;
     }
 }

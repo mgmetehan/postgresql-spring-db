@@ -17,7 +17,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "dss_crm_id")
+    @Column(name = "dss_crm_id")
     private Long dssCrmId;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -34,7 +34,7 @@ public class Account {
     @Enumerated
     private IdType idType;
 
-    @JoinColumn(name = "id_value")
+    @Column(name = "id_value")
     private int idValue;
 
     private String ncst;

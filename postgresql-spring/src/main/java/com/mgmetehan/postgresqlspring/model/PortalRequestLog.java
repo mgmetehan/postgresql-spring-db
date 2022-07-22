@@ -19,6 +19,7 @@ public class PortalRequestLog {
 
     private String request;
 
+    @Lob
     private String response;
 
     private String duration;

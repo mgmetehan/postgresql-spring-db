@@ -27,6 +27,7 @@ public class IntegrationLog {
 
     private String request;
 
+    @Lob
     private String response;
 
     private String description;
