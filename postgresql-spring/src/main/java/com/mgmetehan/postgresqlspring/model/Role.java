@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Channel {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ManyToOne
@@ -20,10 +20,8 @@ public class Channel {
     private Name name;
 
     enum Name {
-        DBS,
-        YAANI,
-        BIP_MEET,
-        LIFE_BOX,
-        SUIT,
+        USER,
+        ADMIN,
+        BUSINESS
     }
 }
