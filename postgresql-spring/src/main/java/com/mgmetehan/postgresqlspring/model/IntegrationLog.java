@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class IntegrationLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +28,7 @@ public class IntegrationLog {
     @Lob
     private String response;
 
+    @Lob
     private String description;
 
     private String duration;
@@ -37,15 +36,15 @@ public class IntegrationLog {
     private String url;
 
     enum Process {
-        LOGIN, ACCOUNT_CREATE
+        LOGIN, ACCOUNT_CREATE;
     }
 
     enum Service {
-        DSS_CRM, SARDIS
+        DSS_CRM, SARDIS;
     }
 
     enum Status {
-        SUCCESS, ERROR, MOCK
+        SUCCESS, ERROR, MOCK;
     }
 
 }

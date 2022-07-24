@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,9 @@ public class Channel {
 
     @ManyToMany(mappedBy = "privileges", fetch = FetchType.LAZY)
     private List<Privilege> privileges;
+
+    @OneToMany(mappedBy = "channel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<KafkaEventLog> kafkaEventLog = new ArrayList<>();
 
     enum Name {
         DBS, YAANI, BIP_MEET, LIFE_BOX, SUIT;

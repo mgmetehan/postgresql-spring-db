@@ -27,9 +27,6 @@ public class Package {
 
     private String priority;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<UserPackages> userPackages = new ArrayList<>();
-
     @OneToMany(mappedBy = "packages", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserPackages> userPackagesList = new ArrayList<>();
 }

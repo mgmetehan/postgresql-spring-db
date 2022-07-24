@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,7 +21,9 @@ public class Subscription {
     private Long id;
 
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "subscription_status_id")
+    private SubscriptionStatus subscriptionStatus;
 
     private Double price;
 
@@ -40,6 +44,13 @@ public class Subscription {
     @Column(name = "with_drawal_fee")
     private Double withDrawalFee;
 
+
+    @OneToMany(mappedBy = "subscriptions", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<UserPackages> userPackagesList = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_method_id")
+    private PaymentMethod paymentMethod;
     enum Type {
     }
 

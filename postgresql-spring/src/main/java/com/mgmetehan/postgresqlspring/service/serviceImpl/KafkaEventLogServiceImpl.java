@@ -29,7 +29,7 @@ public class KafkaEventLogServiceImpl implements KafkaEventLogService {
     public KafkaEventLogViewDto createKafkaEventLog(KafkaEventLogCreateDto newKafkaEventLog) {
         KafkaEventLog saveKafkaEventLog = new KafkaEventLog();
         saveKafkaEventLog.setEvent(newKafkaEventLog.getEvent());
-        saveKafkaEventLog.setChannelId(newKafkaEventLog.getChannelId());
+       //saveKafkaEventLog.setChannelId(newKafkaEventLog.getChannelId());
         saveKafkaEventLog.setIsSend(newKafkaEventLog.getIsSend());
 
         KafkaEventLog kafkaEventLog = kafkaEventLogRepository.save(saveKafkaEventLog);

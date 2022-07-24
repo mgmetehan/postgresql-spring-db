@@ -26,6 +26,10 @@ public class UserPackages {
     @JoinColumn(name = "package_id")
     private Package packages;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "subscription_id")
+    private Subscription subscriptions;
+
 }
 
 

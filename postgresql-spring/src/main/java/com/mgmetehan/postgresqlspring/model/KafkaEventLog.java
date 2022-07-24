@@ -18,8 +18,10 @@ public class KafkaEventLog {
 
     private String event;
 
-    @Column(name = "channel_id")
-    private Long channelId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "channel_id")
+    private Channel channel;
+
 
     @Column(name = "is_send")
     private Boolean isSend;

@@ -9,21 +9,15 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "subscription_status")
+@Table(name = "privilege_group_mapping")
 @NoArgsConstructor
 @AllArgsConstructor
-public class SubscriptionStatus {
+public class PrivilegeGroupMapping {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated
-    private Name name;
-
-    @OneToOne(mappedBy = "subscriptionStatus", cascade = CascadeType.ALL)
-    private Subscription subscriptions;
-
-    enum Name {
-        ACTIVE,DEACTIVE,GRACE_PERIOD,SUSPEND;
-    }
 }
+
+
+
