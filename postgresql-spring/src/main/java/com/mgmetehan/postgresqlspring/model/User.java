@@ -35,7 +35,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_channel", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "channel_id"))
-    private List<User> users;
+    private List<Channel> channels;
 
 
     @Column(name = "room_name")
@@ -56,4 +56,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserPackages> userPackages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<UserAddress> userAddresses = new ArrayList<>();
 }

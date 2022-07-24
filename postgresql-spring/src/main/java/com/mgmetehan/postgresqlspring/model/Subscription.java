@@ -20,6 +20,17 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "subscription_channel", joinColumns = @JoinColumn(name = "subscription_id"), inverseJoinColumns = @JoinColumn(name = "channel_id"))
+    private List<Channel> channels;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "package_id")
+    private Package packages;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "subscription_status_id")
@@ -51,6 +62,10 @@ public class Subscription {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
+
+    @OneToOne(mappedBy = "subscription", cascade = CascadeType.ALL)
+    private SubscriptionHistory subscriptionHistory;
+
     enum Type {
     }
 

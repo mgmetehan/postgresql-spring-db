@@ -29,4 +29,7 @@ public class Package {
 
     @OneToMany(mappedBy = "packages", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserPackages> userPackagesList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "packages", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Subscription> subscriptions = new ArrayList<>();
 }

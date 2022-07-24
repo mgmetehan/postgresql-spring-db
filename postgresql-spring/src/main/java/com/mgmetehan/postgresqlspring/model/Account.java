@@ -52,6 +52,12 @@ public class Account {
     @JoinTable(name = "account_privilegeGroup", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "privilege_group_id"))
     private List<PrivilegeGroup> privilegeGroups;
 
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Subscription> subscriptions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<AccountAddress> accountAddresses = new ArrayList<>();
+
     enum IdType {
         TCKN, VKN
     }

@@ -24,7 +24,7 @@ public class Privilege {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "privilege_channel", joinColumns = @JoinColumn(name = "privilege_id"), inverseJoinColumns = @JoinColumn(name = "channel_id"))
-    private List<Privilege> privileges;
+    private List<Channel> channels;
 
     @OneToMany(mappedBy = "privilege")
     private List<UserPrivilege> userPrivileges = new ArrayList<>();

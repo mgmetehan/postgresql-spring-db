@@ -10,18 +10,28 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "user_address")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reason {
+public class UserAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Lob
-    private String description;
+    private String detail;
 
-    @OneToMany(mappedBy = "reason", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<SubscriptionHistory> subscriptionHistory = new ArrayList<>();
+    @Column(name = "city_id")
+    private Long cityId;
+
+    @Column(name = "district_id")
+    private Long districtId;
+
 }
+
+
+

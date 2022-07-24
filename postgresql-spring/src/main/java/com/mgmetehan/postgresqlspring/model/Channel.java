@@ -23,14 +23,20 @@ public class Channel {
     @ManyToMany(mappedBy = "channels", fetch = FetchType.LAZY)
     private List<Account> accounts;
 
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "channels", fetch = FetchType.LAZY)
     private List<User> users;
 
-    @ManyToMany(mappedBy = "privileges", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "channels", fetch = FetchType.LAZY)
     private List<Privilege> privileges;
 
     @OneToMany(mappedBy = "channel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<KafkaEventLog> kafkaEventLog = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "channels", fetch = FetchType.LAZY)
+    private List<Subscription> subscriptions = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "channels", fetch = FetchType.LAZY)
+    private List<SubscriptionHistory> subscriptionHistory = new ArrayList<>();
 
     enum Name {
         DBS, YAANI, BIP_MEET, LIFE_BOX, SUIT;
