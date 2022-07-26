@@ -9,22 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "application_user")
 @Data
+@Table(name = "payment_method")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApplicationUser {
+public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "client_secret")
-    private String clientSecret;
+    private String name;
 
-    @Column(name = "client_key")
-    private String clientKey;
-
-    @OneToMany(mappedBy = "applicationUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ExternalRequestLog> log = new ArrayList<>();
-
+    @OneToMany(mappedBy = "paymentMethod", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Subscription> subscriptions = new ArrayList<>();
 }

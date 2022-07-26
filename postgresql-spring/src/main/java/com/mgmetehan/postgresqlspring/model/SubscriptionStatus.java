@@ -5,15 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
+@Table(name = "subscription_status")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
-
+public class SubscriptionStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,10 +20,10 @@ public class Role {
     @Enumerated
     private Name name;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<User> users = new ArrayList<>();
+    @OneToOne(mappedBy = "subscriptionStatus", cascade = CascadeType.ALL)
+    private Subscription subscriptions;
 
     enum Name {
-        USER, ADMIN, BUSINESS;
+        ACTIVE,DEACTIVE,GRACE_PERIOD,SUSPEND;
     }
 }

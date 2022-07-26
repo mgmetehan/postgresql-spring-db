@@ -20,5 +20,6 @@ public class SystemParameters {
 
     private String value;
 
+    @Lob
     private String description;
 }

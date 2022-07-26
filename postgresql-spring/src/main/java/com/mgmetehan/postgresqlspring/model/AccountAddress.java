@@ -7,24 +7,28 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "kafka_event_log")
 @Data
+@Table(name = "account_address")
 @NoArgsConstructor
 @AllArgsConstructor
-public class KafkaEventLog {
+public class AccountAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String event;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "channel_id")
-    private Channel channel;
+    @JoinColumn(name = "account_id")
+    private Account account;
 
+    @Lob
+    private String detail;
 
-    @Column(name = "is_send")
-    private Boolean isSend;
+    @Column(name = "city_id")
+    private Long cityId;
+
+    @Column(name = "district_id")
+    private Long districtId;
+
 }
 
 

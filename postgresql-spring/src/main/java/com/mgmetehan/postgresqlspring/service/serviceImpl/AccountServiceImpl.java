@@ -27,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
     public Account createAccount(Account newAccount) {
         Account saveAccount = new Account();
         saveAccount.setDssCrmId(newAccount.getDssCrmId());
-        saveAccount.setChannel(newAccount.getChannel());
+        //saveAccount.setChannel(newAccount.getChannel());
         saveAccount.setType(newAccount.getType());
         saveAccount.setName(newAccount.getName());
         saveAccount.setHostname(newAccount.getHostname());

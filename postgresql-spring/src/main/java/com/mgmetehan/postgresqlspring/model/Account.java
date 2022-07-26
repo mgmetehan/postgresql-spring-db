@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,17 +15,14 @@ import java.util.List;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToMany
     private Long id;
 
-    @JoinColumn(name = "dss_crm_id")
+    @Column(name = "dss_crm_id")
     private Long dssCrmId;
 
-    //Bir hesabından birden fazla channeli vardır
-    //Bir channelın birden fazla kullanıcısı vardır
-    @ManyToMany()
-    @JoinColumn(name = "channel_id")
-    private List<Channel> channel;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "account_channel", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "channel_id"))
+    private List<Channel> channels;
 
     @Enumerated
     private Type type;
@@ -36,12 +34,35 @@ public class Account {
     @Enumerated
     private IdType idType;
 
-    @JoinColumn(name = "id_value")
-    private Long idValue;
+    @Column(name = "id_value")
+    private int idValue;
+
+    private String ncst;
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    private AccountDomain accountDomain;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<AuthenticationMethod> authenticationMethods = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "account_privilegeGroup", joinColumns = @JoinColumn(name = "account_id"), inverseJoinColumns = @JoinColumn(name = "privilege_group_id"))
+    private List<PrivilegeGroup> privilegeGroups;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Subscription> subscriptions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<AccountAddress> accountAddresses = new ArrayList<>();
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL)
+    private AccountHistory accountHistory;
 
     enum IdType {
-        TCKN,
-        VKN
+        TCKN, VKN
     }
 
     enum Type {

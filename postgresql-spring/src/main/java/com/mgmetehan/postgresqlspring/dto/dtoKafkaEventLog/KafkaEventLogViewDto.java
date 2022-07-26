@@ -20,7 +20,8 @@ public class KafkaEventLogViewDto {
         this.isSend = isSend;
     }
 
-    public static KafkaEventLogViewDto of(KafkaEventLog kafkaEventLog) {
-        return new KafkaEventLogViewDto(kafkaEventLog.getId(), kafkaEventLog.getEvent(), kafkaEventLog.getChannelId(), kafkaEventLog.getIsSend());
+  public static KafkaEventLogViewDto of(KafkaEventLog kafkaEventLog) {
+        //return new KafkaEventLogViewDto(kafkaEventLog.getId(), kafkaEventLog.getEvent(), kafkaEventLog.getChannelId(), kafkaEventLog.getIsSend());
+      return null;
     }
 }

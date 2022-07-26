@@ -9,22 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "application_user")
 @Data
+@Table(name = "user_privilege")
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApplicationUser {
+public class UserPrivilege {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "client_secret")
-    private String clientSecret;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "privilege_id")
+    private Privilege privilege;
 
-    @Column(name = "client_key")
-    private String clientKey;
-
-    @OneToMany(mappedBy = "applicationUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ExternalRequestLog> log = new ArrayList<>();
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
+
+
+
